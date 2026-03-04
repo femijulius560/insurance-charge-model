@@ -1,14 +1,14 @@
 # Healthcare Insurance Cost Analysis & Prediction
-This project analyses healthcare insurance data to understand how personal attributes and geographic factors influence medical insurance charges. It also develops predictive model for estimating insurance costs for individuals and groups.
+This project analyses healthcare insurance data to understand how personal attributes and geographic factors influence medical insurance charges. It also develops a predictive model for estimating insurance costs for individuals and groups.
 
 
-# Project Goals
+## Project Goals
 1. Understand how personal attributes and geographic factors influence insurance costs.
 2. Identify patterns and significant risk indicators through descriptive, correlation, and predictive analytics.
 3. Build interpretable machine learning models capable of estimating insurance charges.
 
 
-# Dataset Description
+## Dataset Description
 | Attribute | Description                        | Data Type   |
 | --------- | ---------------------------------- | ----------- |
 | age       | Policyholder's age                 | Integer     |
@@ -20,7 +20,7 @@ This project analyses healthcare insurance data to understand how personal attri
 | charges   | Insurance cost (target variable)   | Float       |
 
 
-# ETL Pipeline
+## ETL Pipeline
 **Extract**
 - Raw CSV dataset exported from Kaggle.
 - Imported into Pandas for processing.
@@ -38,14 +38,14 @@ This project analyses healthcare insurance data to understand how personal attri
 - Cleaned dataset imported for analysis and modeling.
 
 
-# Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 **Descriptive Statistics**
 Average insurance charges by:
-Age groups
-Sex
-Smoker status
-Region
-BMI_category
+- Age groups
+- Sex
+- Smoker status
+- Region
+- BMI_category
 
 **Visualizations**
 A series of exploratory and analytical visualizations were created to understand key patterns in the dataset:
@@ -65,19 +65,18 @@ A combined correlation report was produced, including heatmaps and feature corre
 
 
 
-# Predictive Modeling
+## Predictive Modeling
 Models Evaluated:
 - Linear Regression: Baseline linear model
 - Random Forest Regressor: Ensemble-based model (selected as final)
 
-# Methodology
+### Methodology
 - Train-test split applied.
 - Categorical features encoded using one-hot encoding.
-Model trained on log_charges to address skewness; predictions transformed back to actual charges with expm1().
-- Target Transformation: Models trained on `log_charges` to handle skewness
-- Inverse Transformation: Predictions converted back to actual charges using `expm1()`
+- Target transformation: `charges` log-transformed to `log_charges` to handle skewness.
+- Inverse transformation: Predictions on `log_charges` converted back to actual charges using `expm1()`.
 
-# Evaluation Metrics
+### Evaluation Metrics
 | Metric | Description                  |
 |--------|----------------------------  |
 | MAE    | Mean Absolute Error          |
@@ -85,10 +84,10 @@ Model trained on log_charges to address skewness; predictions transformed back t
 | RMSE   | Root Mean Squared Error      |
 | R²     | Coefficient of Determination |
 
-# Results
+### Results
 Random Forest outperformed Linear Regression across all metrics.
 
-# Predictive Reporting
+### Predictive Reporting
 - Full Predictive Report (csv)
 - Actual vs. predicted scatter plots
 - Summary tables
@@ -103,7 +102,10 @@ Random Forest outperformed Linear Regression across all metrics.
 - **BMI** affects charges, with overweight and obese individuals incurring higher predicted costs.
 - **Regional differences** exist but are less impactful than lifestyle factors and age.
 
+## Deployment
+An interactive Streamlit web application was built using the trained model to allow users to make predictions in real time.  
+Access the deployed app here:  https://femijulius560-insurance-charge-model.streamlit.app/
 
-# Notes
+## Notes
 The model was trained on log-transformed charges; all predictions are reported in actual dollar values.
 Extreme BMI values were retained to maintain realistic variability in the dataset.
